@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="name" (input)="Search()" placeholder="Search Coupon" name="searchCoupon">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let company of companies">
+            <div class="card">
+                <div class="card-img">
+                    <img src="assets/images/logo.jpg" alt="IMG">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{company.name}}</h5>
+                    <p class="card-text">{{company.email}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{company.email}}</li>
+                    <li class="list-group-item">{{company.name}}</li>
+                </ul>
+                <div class="card-body" id="buy-now">
+                    <button type="button" class="btn btn-info">
+                        <i class="material-icons">edit</i>
+                        <span>Edit</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

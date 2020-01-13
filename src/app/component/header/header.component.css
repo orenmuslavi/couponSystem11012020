@@ -1,0 +1,36 @@
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 77px;
+    box-shadow: 0 0 12px -2px #000;
+    background-color: #fff;
+    padding: 0 32px;
+    width: 100%;
+}
+
+.welcome{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.welcome figure{
+    margin: 0;
+    height: 77px;
+}
+
+.welcome img{
+    height: 70px;
+}
+
+.welcome h1{
+    margin-left: 1em;
+    margin-bottom: 0;
+    font-size: 22px;
+}
+
+.menu{
+    height: 100%;
+}

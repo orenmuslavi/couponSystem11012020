@@ -1,0 +1,46 @@
+<div class="login">
+  <!-- <div class="main-logo">
+    <figure class="login-logo">
+      <img src="../assets/images/locker.png" alt="login logo">
+    </figure>
+  </div> -->
+  <h3 class="login-title">Member Login</h3>
+
+  <form [formGroup]=registerForm (ngSubmit)="onSubmit()">
+
+
+    <div class="field">
+      <i class="material-icons">email</i>
+      <input type="text" formControlName="email" placeholder="Email" [(ngModel)]="email"
+        [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.email.errors }" />
+      <div *ngIf="submitted &amp;&amp; registerForm.controls.email.errors" class="error-text">
+        <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
+        <div *ngIf="registerForm.controls.email.errors.email">Email must be a valid email address</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <i class="material-icons">lock</i>
+      <input type="password" formControlName="password" placeholder="Password" [(ngModel)]="password"
+        [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.password.errors }" />
+      <div *ngIf="submitted &amp;&amp; registerForm.controls.password.errors" class="text-danger">
+        <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
+        <div *ngIf="registerForm.controls.password.errors.minlength">Password must be at least 8 characters</div>
+      </div>
+    </div>
+
+    <div class="field select">
+      <i class="material-icons">supervised_user_circle</i>
+      <select name="users" [(ngModel)]="userChoose" [ngModelOptions]="{standalone: true}">
+        <option disabled selected="selected">select user type</option>
+        <option value="admin">Admin</option>
+        <option value="company">Company</option>
+        <option value="customer">Customer</option>
+      </select>
+    </div>
+
+    <div class="submit-button">
+      <input type="submit" class="btn btn-primary" value="Login">
+    </div>
+  </form>
+</div>
