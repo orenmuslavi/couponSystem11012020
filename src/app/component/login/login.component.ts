@@ -3,7 +3,12 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpResponse, HttpHandler, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs';
+import { resultLogin } from 'src/app/models/resultLogin';
 
+
+function hello() {
+  alert('Hello!!!');
+}
 
 @Component({
   selector: 'app-login',
@@ -20,11 +25,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   private _urlLoginCompany = "http://localhost:8080/company/login"
   loginAuthentication: boolean = false;
-  login = [{
-    "email": 'tincidunt@velitjusto.net',
-    "password": '19573517'
-  }];
-  res: any[];
+  login = [{}];
+  res: any;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient) { }
 
@@ -41,19 +43,25 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    hello();
     if (this.registerForm.invalid) {
       return;
     }
     else {
-
-
       this.http.post(this._urlLoginCompany, {
         "email": this.email,
         "password": this.password
-      }).subscribe(
-        (val) => {
+      }).subscribe(        (val: resultLogin) => {
           console.log("POST call successful value returned in body",
-            val);
+            val.id);
+            if (this.userChoose == "company") {
+              //debug mode only 
+          
+              console.log(this.login);
+              }
+              else {
+                this.navigateTo();
+              }
         },
         response => {
           console.log("POST call in error", response);
@@ -63,13 +71,12 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    if (this.userChoose == "company") {
 
-      this.navigateTo();
-    }
-    else {
+    // stop the process here if form is invalid
 
-    }
+
+   
+
   }
 
   navigateTo() {
